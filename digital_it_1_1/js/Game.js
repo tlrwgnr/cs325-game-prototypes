@@ -31,6 +31,7 @@ BasicGame.Game = function (game) {
     this.ground = null;
     this.platforms = null;
     this.music = null;
+    this.getLetterSFX = null;
 };
 
 BasicGame.Game.prototype = {
@@ -60,8 +61,12 @@ BasicGame.Game.prototype = {
         // this.bouncy.inputEnabled = true;
         // this.bouncy.events.onInputDown.add( function() { this.state.start('MainMenu'); }, this );
         //
+        this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
+        this.game.add.sprite(0,0, 'game_bg').scale.setTo(1.5,1.75);
         this.music = this.add.audio('gameMusic');
         this.music.play();
+        this.getLetterSFX = this.add.audio('getLetterSound');
 
         this.player = this.game.add.sprite(0,0, 'playerSprite')
         // this.player.add.animations.add('left', [8, 9, 10, 11], 10, true);
@@ -76,19 +81,43 @@ BasicGame.Game.prototype = {
         this.player.body.collideWorldBounds = true;
         this.player.scale.setTo(.25, .25);
 
-        this.letter = this.game.add.sprite(this.game.world.width-50,this.game.world.height-50, 'letterSprite');
+        this.letter = this.game.add.sprite(this.game.world.width-50,this.game.world.height-70, 'letterSprite');
         this.letter.scale.setTo(.25,.25);
 
         this.game.physics.arcade.enable(this.letter);
+        // this.game.physics.arcade.enable(this.platforms);
 
         this.platforms = this.game.add.group();
         this.platforms.enableBody = true;
-        this.ground = this.platforms.create(0,this.game.world.height-50, 'floorSprite');
+        {
+            this.platforms.create(0,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(50,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(100,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(150,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(200,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(250,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(300,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(350,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(400,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(450,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(500,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(550,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(600,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(650,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(700,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(750,this.game.world.height-70, 'floorSprite');
+            this.platforms.create(800,this.game.world.height-70, 'floorSprite');
+
+        }
+        // this.platforms.create(0,this.game.world.height-100, 'floorSprite');
+        // this.platforms.create(50,this.game.world.height-100, 'floorSprite');
+        this.platforms.create(0,0, 'floorSprite');
     },
 
     update: function () {
         function playerGetLetter(player, letter){
             letter.kill();
+            // this.getLetterSFX.play();
         }
 
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!

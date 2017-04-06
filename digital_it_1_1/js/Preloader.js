@@ -36,6 +36,9 @@ BasicGame.Preloader.prototype = {
         this.load.image('floorSprite' ,'assets/bridge.png');
         this.load.spritesheet('playerSprite', 'assets/vector-business-man-walking-cycle.png', 350, 490)
         this.load.audio('gameMusic', 'assets/Jumpshot.mp3');
+        this.load.audio('getLetterSound', 'assets/letter_sound.wav');
+
+        this.load.image('game_bg', 'assets/background.png')
 
 	},
 
