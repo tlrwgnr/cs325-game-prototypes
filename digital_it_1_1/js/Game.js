@@ -30,6 +30,7 @@ BasicGame.Game = function (game) {
     this.letter = null;
     this.ground = null;
     this.platforms = null;
+    this.music = null;
 };
 
 BasicGame.Game.prototype = {
@@ -58,6 +59,9 @@ BasicGame.Game.prototype = {
         // // When you click on the sprite, you go back to the MainMenu.
         // this.bouncy.inputEnabled = true;
         // this.bouncy.events.onInputDown.add( function() { this.state.start('MainMenu'); }, this );
+        //
+        this.music = this.add.audio('gameMusic');
+        this.music.play();
 
         this.player = this.game.add.sprite(0,0, 'playerSprite')
         // this.player.add.animations.add('left', [8, 9, 10, 11], 10, true);

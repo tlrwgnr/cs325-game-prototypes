@@ -14,8 +14,8 @@ BasicGame.Preloader.prototype = {
 
 		//	These are the assets we loaded in Boot.js
 		//	A nice sparkly background and a loading progress bar
-		this.background = this.add.sprite(0, 0, 'preloaderBackground');
-		this.preloadBar = this.add.sprite(300, 400, 'preloaderBar');
+		// this.background = this.add.sprite(0, 0, 'preloaderBackground');
+		this.preloadBar = this.add.sprite(200, 200, 'logoTitle');
 
 		//	This sets the preloadBar sprite as a loader sprite.
 		//	What that does is automatically crop the sprite from 0 to full-width
@@ -24,9 +24,10 @@ BasicGame.Preloader.prototype = {
 
 		//	Here we load the rest of the assets our game needs.
 		//	As this is just a Project Template I've not provided these assets, swap them for your own.
-		this.load.image('titlePage', 'assets/title.jpg');
-		this.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
-		this.load.audio('titleMusic', ['assets/Poppers and Prosecco.mp3']);
+		this.load.image('sky_background', 'assets/sky.png');
+		// this.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
+		this.load.image('playButton', 'assets/start_button.png')
+		this.load.audio('titleMusic', 'assets/03 Chibi Ninja.mp3');
 		//	+ lots of other required assets here
         this.load.image( 'logo', 'assets/phaser.png' );
 
@@ -34,6 +35,7 @@ BasicGame.Preloader.prototype = {
         this.load.image('letterSprite', 'assets/mail_sprite_by_aniahmator-dakygdv.png');
         this.load.image('floorSprite' ,'assets/bridge.png');
         this.load.spritesheet('playerSprite', 'assets/vector-business-man-walking-cycle.png', 350, 490)
+        this.load.audio('gameMusic', 'assets/Jumpshot.mp3');
 
 	},
 
