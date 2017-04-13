@@ -74,10 +74,11 @@ BasicGame.Game.prototype = {
         this.getLetterSFX = this.add.audio('getLetterSound');
 
         this.bossDoor = this.game.add.sprite(this.game.world.width-135,15,'bossDoor');
+        this.game.add.sprite(this.game.world.width-135,15,'bossDoor').scale.setTo(.3,.3);
         this.bossDoor.scale.setTo(.3,.3);
         this.bossDoor.enableBody = true;
 
-        this.player = this.game.add.sprite(this.game.world.width/2,this.game.world.height-200, 'playerSprite')
+        this.player = this.game.add.sprite(this.game.world.width/2,this.game.world.height-200, 'playerSprite');
         // this.player.add.animations.add('left', [8, 9, 10, 11], 10, true);
         this.player.animations.add('right', [0,1,2,3,4,5,6,7], 5, true);
         this.player.events.onInputDown.add(function(){this.statet.start('GameOver');}, this)
@@ -95,7 +96,7 @@ BasicGame.Game.prototype = {
         this.letter.scale.setTo(.25,.25);
 
         this.game.physics.arcade.enable(this.letter);
-        // this.game.physics.arcade.enable(this.platforms);
+        this.game.physics.arcade.enable(this.bossDoor);
 
         this.platforms = this.game.add.group();
         this.platforms.enableBody = true;
@@ -166,7 +167,7 @@ BasicGame.Game.prototype = {
 
         function enemyMove(enemies){
             for(enemy in enemies){
-                enemy.body.velocity.x = Math.random()*10;
+                enemy.body.velocity.x = Math.random()*100;
             }
         }
 
@@ -185,16 +186,27 @@ BasicGame.Game.prototype = {
         }
 
         function playerReachDoor(player, door){
-            alert("alksjdf;lja")
+            console.log("door touched");
+            door.kill();
         }
 
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
         // this.tileBack.tilePosition.y = 2;
 
-        this.game.physics.arcade.collide(this.player, this.letter, playerGetLetter);
-        this.game.physics.arcade.collide(this.player, this.enemies);
-        this.game.physics.arcade.collide(this.player, this.bossDoor, playerReachDoor);
+        if(this.game.physics.arcade.collide(this.player, this.letter, playerGetLetter)){
+            this.playerHasLetter = true;
+        }
+        if(this.game.physics.arcade.collide(this.player, this.enemies)){
+            // this.state.start('GameOver');
+            this.quitGame();
+        }
+        if(this.playerHasLetter){
+            if(this.game.physics.arcade.collide(this.player, this.bossDoor, playerReachDoor)){
+                this.winGame();
+            }
+        }
+
 
         var hitPlatform = this.game.physics.arcade.collide(this.player, this.platforms);
 
@@ -232,7 +244,20 @@ BasicGame.Game.prototype = {
 
         //  Then let's go back to the main menu.
         // this.state.start('MainMenu');
+        this.music.stop();
         this.state.start('GameOver');
+
+    },
+
+    winGame: function (pointer) {
+
+        //  Here you should destroy anything you no longer need.
+        //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
+
+        //  Then let's go back to the main menu.
+        // this.state.start('MainMenu');
+        this.music.stop();
+        this.state.start('Win');
 
     }
 

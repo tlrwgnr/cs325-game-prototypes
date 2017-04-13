@@ -45,6 +45,12 @@ BasicGame.Preloader.prototype = {
         this.load.image('bossDoor', 'assets/Door.png');
 
 
+        this.load.image('retryButton', 'assets/button_retry.png');
+        this.load.image('mainMenuButton', 'assets/button_main-menu.png');
+        this.load.image('gameover_text', 'assets/gameover_text.png');
+        this.load.image('victory', 'assets/victory.png');
+
+
 	},
 
 	create: function () {

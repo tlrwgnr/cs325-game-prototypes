@@ -11,6 +11,7 @@ window.onload = function() {
 	game.state.add('MainMenu', BasicGame.MainMenu);
 	game.state.add('Game', BasicGame.Game);
     game.state.add('GameOver', BasicGame.GameOver);
+    game.state.add('Win', BasicGame.Win);
 
 	//	Now start the Boot state.
 	game.state.start('Boot');

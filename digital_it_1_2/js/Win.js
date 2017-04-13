@@ -1,12 +1,12 @@
 
-BasicGame.GameOver = function (game) {
+BasicGame.Win = function (game) {
 
 	this.music = null;
 	this.playButton = null;
 
 };
 
-BasicGame.GameOver.prototype = {
+BasicGame.Win.prototype = {
 
 	create: function () {
 
@@ -19,7 +19,7 @@ BasicGame.GameOver.prototype = {
 
 		this.add.sprite(0, 0, 'sky_background');
 
-        this.game.add.sprite(150,200, 'gameover_text')
+        this.game.add.sprite(150,200, 'victory')
 
 		this.playAgainButton = this.add.button( 200, 400, 'retryButton', this.playAgain, this);
         this.menuButton = this.add.button( 400, 400, 'mainMenuButton', this.toMainMenu, this);
