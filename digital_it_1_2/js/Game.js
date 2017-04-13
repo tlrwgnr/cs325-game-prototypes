@@ -161,6 +161,15 @@ BasicGame.Game.prototype = {
             var enemy = this.enemies.create(this.game.world.width-200,this.game.world.height-235,'pigeon_left');
             enemy.scale.setTo(.25,.25);
             enemy.body.immovable = true;
+            enemy = this.enemies.create(this.game.world.width-300,this.game.world.height-800,'pigeon_left');
+            enemy.scale.setTo(.25,.25);
+            enemy.body.immovable = true;
+            enemy = this.enemies.create(this.game.world.width-450,this.game.world.height-650,'pigeon_left');
+            enemy.scale.setTo(.25,.25);
+            enemy.body.immovable = true;
+            enemy = this.enemies.create(this.game.world.width-550,this.game.world.height-300,'pigeon_left');
+            enemy.scale.setTo(.25,.25);
+            enemy.body.immovable = true;
         }
 
         this.game.time.events.repeat(Phaser.Timer.SECOND * 3, 1000, enemyMove, this);
