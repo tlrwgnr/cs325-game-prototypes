@@ -42,7 +42,7 @@ BasicGame.Preloader.prototype = {
         this.load.audio('getLetterSound', 'assets/letter_sound.wav');
 
         this.load.image('game_bg', 'assets/background.png');
-        this.load.image('bossDoor', 'assets/door.png');
+        this.load.image('bossDoor', 'assets/Door.png');
 
 
 	},
