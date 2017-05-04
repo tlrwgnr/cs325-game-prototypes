@@ -12,6 +12,7 @@ window.onload = function() {
 	game.state.add('Game', BasicGame.Game);
     game.state.add('GameOver', BasicGame.GameOver);
     game.state.add('Win', BasicGame.Win);
+    game.state.add('ChooseShip', BasicGame.ChooseShip);
 
 	//	Now start the Boot state.
 	game.state.start('Boot');

@@ -51,6 +51,12 @@ BasicGame.Preloader.prototype = {
         this.load.image('mainMenuButton', 'assets/button_main-menu.png');
         this.load.image('gameover_text', 'assets/gameover_text.png');
         this.load.image('victory', 'assets/victory.png');
+        this.load.image('destroyerButton', 'assets/destroyerButton.png');
+        this.load.image('carrierButton', 'assets/carrierButton.png');
+        this.load.image('stealth_cruiserButton', 'assets/stealth_cruiserButton.png');
+        this.load.image('corvetteButton', 'assets/corvetteButton.png');
+
+
 
 
 	},

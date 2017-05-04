@@ -223,6 +223,44 @@ BasicGame.Game = function(game) {
         }
         this.gametext.text = "Enemy turn complete!";
     }
+
+    this.create_player = function(){
+        this.playerDidAction = false;
+
+        switch (this.game.state.states['Game'].playerShip) {
+            case 'carrier':
+                this.player_health = 30;
+                this.player_defense = 20;
+                this.player_attack = 10;
+                this.player_fighters = 2;
+                this.add.sprite(this.game.world.width - 300, 50, 'carrier');
+                break;
+            case 'destroyer':
+                this.player_health = 25;
+                this.player_defense = 15;
+                this.player_attack = 15;
+                this.player_fighters = 1;
+                this.add.sprite(this.game.world.width - 300, 50, 'destroyer');
+                break;
+            case 'stealth_cruiser':
+                this.player_health = 15;
+                this.player_defense = 10;
+                this.player_attack = 10;
+                this.player_fighters = 1;
+                this.add.sprite(this.game.world.width - 370, 50, 'stealth_cruiser');
+                break;
+            case 'corvette':
+                this.player_health = 15;
+                this.player_defense = 15;
+                this.player_attack = 15;
+                this.player_fighters = 1;
+                this.add.sprite(this.game.world.width - 350, 50, 'corvette');
+                break;
+            default:
+                break;
+        }
+
+    }
     this.roll = null;
 };
 
@@ -231,7 +269,7 @@ BasicGame.Game = function(game) {
 BasicGame.Game.prototype = {
 
     create: function() {
-
+        console.log(this.game.state.states['Game'].playerShip);
         this.music = this.add.audio('gameMusic');
         this.music.play();
         this.floor = new Phaser.Rectangle(this.game.world.width - 200, 0, 200, 600);
@@ -239,20 +277,14 @@ BasicGame.Game.prototype = {
 
 
         this.tileBack = this.add.sprite(0, 0, 'space_bg2').scale.setTo(.17, .17);
-        this.add.sprite(this.game.world.width - 150, 50, 'destroyer').scale.setTo(.5, .5);
+
 
 
         this.create_enemy();
-        this.enemy = this.add.sprite(300, 50, this.enemy_ship);
+        this.enemy = this.add.sprite(100, 50, this.enemy_ship);
         this.textBox = this.add.sprite(0, this.game.world.height - 250, 'textBox');
 
-        this.playerDidAction = false;
-
-        this.player_health = 10;
-        this.player_defense = 10;
-        this.player_attack = 10;
-        this.player_fighters = 1;
-        this.enemy_health = 30;
+        this.create_player();
 
         this.roll = Math.ceil(Math.random() * 10);
 
